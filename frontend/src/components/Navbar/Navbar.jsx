@@ -10,7 +10,9 @@ const Navbar = () => {
     const [showbar,setshowbar] = useState(false);
     const [darkmode,setdarkmode] = useState(false);
 
-    const LogoutHandler = () => {}
+    const LogoutHandler = () => {
+        // disaptch logout 
+    }
     const shownavlinks = () => { setshowbar(!showbar)}
     const changemode   = () => { 
         setdarkmode(!darkmode)
