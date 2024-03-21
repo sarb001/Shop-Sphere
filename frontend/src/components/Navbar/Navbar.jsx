@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className = 'bg-slate-400 sm:bg-neutral-700 md:bg-red-400  lg:bg-green-600  xl:bg-violet-600 2xl:bg-orange-500 text-black  dark:bg-black dark:text-white  w-full'>
                 <div className='mx-4 flex flex-row justify-between p-4 h-16'>
                 <div className='text-2xl'> 
-                    <NavLink to = "/">  ReserveaRoom.com   </NavLink> 
+                    <NavLink to = "/">  ShopSphere  </NavLink> 
                 </div>
 
                 {!showbar && 
@@ -37,7 +37,7 @@ const Navbar = () => {
                         </li>
                         <li  className='py-2'> <FaGlobe /> </li>
                         <li  className='pt-2  md:pt-2 lg:font-medium'> 
-                            <NavLink to = "/listing">  List your Property  </NavLink>     
+                            <NavLink to = "/">  List your Property  </NavLink>     
                         </li>
 
                         {!isAuthenticated ? 
