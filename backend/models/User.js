@@ -27,15 +27,6 @@ UserSchema.pre('save' , async function(next){
     next();
 })
 
-// password from input
-
-// this.password from fetched data user 
-
-
-UserSchema.methods.generateToken =  function(){
-     return  jwt.sign({_id : this._id} , 'pass@123')
-}
-
 
 const User = mongoose.model('User',UserSchema);
 export  default User;

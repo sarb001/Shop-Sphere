@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom'
+import { RegisterUser } from '../actions/UserActions';
 
 const Register = () => {
 
-  const [fname,setfname] = useState('');
+  const [name,setname] = useState('');
   const [email,setemail] = useState('');
   const [password,setpassword] = useState('');
 
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-   const HandleRegistration = () => {
-
+   const HandleRegistration = (e) => {
+      e.preventDefault();
+      console.log('fname =',name);
+      console.log('email =',email);
+      console.log('password =',password);
+       dispatch(RegisterUser({name,email,password}));
    }
 
   return (
@@ -31,8 +35,8 @@ const Register = () => {
 
                   <div className='my-2 sm:flex sm:justify-evenly'>
                     <label> Name </label>
-                    <input type = "text"  placeholder='Johny'  value = {fname} 
-                    onChange = {(e) => setfname(e.target.value)}
+                    <input type = "text"  placeholder='Johny'  value = {name} 
+                    onChange = {(e) => setname(e.target.value)}
                     required/>
                   </div>
 
