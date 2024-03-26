@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../actions/UserActions';
+import { toast } from 'react-toastify' ;
 
 const Register = () => {
 
@@ -9,14 +10,18 @@ const Register = () => {
   const [email,setemail] = useState('');
   const [password,setpassword] = useState('');
 
-  const dispatch = useDispatch();
+  const dispatch =  useDispatch();
+  const navigate =  useNavigate();
+
+  const { loading ,  error  } = useSelector(state => state.user);
 
    const HandleRegistration = (e) => {
       e.preventDefault();
       console.log('fname =',name);
       console.log('email =',email);
       console.log('password =',password);
-       dispatch(RegisterUser({name,email,password}));
+      dispatch(RegisterUser({name,email,password}));
+      navigate('/login');
    }
 
   return (
@@ -61,8 +66,7 @@ const Register = () => {
             
                     <div className='sm:text-center'>
                       <button className='p-2 bg-slate-900 text-white'> 
-                       {/* {loading ? "Creating... " : "Create an Account "} */}
-                          Create An Account 
+                       {loading ? "Creating... " : "Create an Account "}
                       </button>
                     </div>
                   
