@@ -1,10 +1,11 @@
 import  { createSlice } from '@reduxjs/toolkit' ;
-import { LoginUser, RegisterUser } from '../actions/UserActions';
+import { LoginUser, LogoutUser, ProfileAuthentication, RegisterUser } from '../actions/UserActions';
 
 const initialState = {
     loading  :false,
     error :  null,
-    users :  []
+    users :  [],
+    isAuth : false,
 }
 
 
@@ -26,16 +27,46 @@ const UserSlice = createSlice({
             state.loading = false
             state.error  = action.payload
     })
+
     .addCase(LoginUser.pending   ,(state,action) => {
             state.loading = true
      })
     .addCase(LoginUser.fulfilled ,(state,action) => {
              state.loading = false
              state.users = action.payload;
-    })
-     .addCase(LoginUser.rejected  ,(state,action) => {
+     })
+    .addCase(LoginUser.rejected ,(state,action) => {
+             state.loading = false
+             state.error = action.payload
+     })
+
+     .addCase(LogoutUser.pending  ,(state,action) => {
             state.loading = false
             state.error  = action.payload
+     })
+    .addCase(LogoutUser.fulfilled ,(state,action) => {
+             state.loading = false
+             state.users = null;
+             state.isAuth = false;    // user logged so auth will be false                      
+     })
+    .addCase(LogoutUser.rejected  ,(state,action) => {
+            state.loading = false
+            state.error  = action.payload
+    })
+
+    .addCase(ProfileAuthentication.pending   ,(state,action) => {
+            state.loading = true;
+            state.isAuth = false
+     })
+    .addCase(ProfileAuthentication.fulfilled ,(state,action) => {
+             state.loading = false
+             state.users = action.payload;
+             state.isAuth = true
+    })
+     .addCase(ProfileAuthentication.rejected  ,(state,action) => {
+            state.loading = false
+            state.error  = action.payload
+            state.isAuth = false
     })
 })
 

@@ -1,24 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {  NavLink ,useNavigate } from 'react-router-dom' ;
 import { FaGlobe } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaMoon } from "react-icons/fa6";
 import { IoSunny } from "react-icons/io5";
 import { useDispatch, useSelector  } from 'react-redux' ;
+import { LogoutUser, ProfileAuthentication } from '../actions/UserActions';
 const Navbar = () => {
 
     const [showbar,setshowbar] = useState(false);
     const [darkmode,setdarkmode] = useState(false);
+    
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const LogoutHandler = () => {
-        // disaptch logout 
+    const LogoutHandler = async(e) => {
+        e.preventDefault();
+        console.log('user logged out ');
+        await  dispatch(LogoutUser());   
+        navigate('/'); 
     }
     const shownavlinks = () => { setshowbar(!showbar)}
     const changemode   = () => { 
         setdarkmode(!darkmode)
     }
 
-    const isAuthenticated = false;
+    const { isAuth , loading } = useSelector(state => state.user);
+    console.log('main auth =',isAuth);
+  
+  
+     useEffect(() => {
+        dispatch(ProfileAuthentication())
+     },[dispatch])
 
   return (
     <>
@@ -42,7 +55,7 @@ const Navbar = () => {
                             <NavLink to = "/">  List your Property  </NavLink>     
                         </li>
 
-                        {!isAuthenticated ? 
+                        {!isAuth ? 
                             <>
 
                             <li  className='py-2'> 
@@ -63,8 +76,7 @@ const Navbar = () => {
                                 <li  className='py-2'> 
                                 <button className='bg-slate-100 text-blue-600 p-1'
                                     onClick={LogoutHandler}>
-                                    {loading ? "Logging Out.." : "Logout"}  
-                                    Logout
+                                    {loading ? "Logging Out.." : "Logout"}
                                     </button> 
                                 </li>
 

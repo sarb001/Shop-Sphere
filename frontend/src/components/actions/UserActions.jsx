@@ -29,3 +29,27 @@ export  const  LoginUser = createAsyncThunk('api/login' , async(userData , { rej
         return rejectWithValue(error.response.data.message || "Something  went Wrong");
 }
 })
+
+export const LogoutUser = createAsyncThunk('api/logout' , async( userData  , { rejectWithValue }) => {
+        try {
+                const response = await axios.get('api/logout' , userData);
+                console.log('logout reponse =',response);
+                toast.success(response.data.message);
+                return true;
+        } catch (error) {
+                console.log('logout error =',error);
+                return rejectWithValue(error.response.data.message || "Something  went Wrong");
+        }
+})
+
+
+export const ProfileAuthentication = createAsyncThunk('api/profile' , async( userData  ,{ rejectWithValue }) => {
+        try {
+                const response = await axios.get('api/profile' , userData);
+                console.log('response profile=',response);
+                return response.data;
+        } catch (error) {
+                console.log('error = ',error);
+                return rejectWithValue(error.response.data.message || "Something  went Wrong");
+        }       
+})

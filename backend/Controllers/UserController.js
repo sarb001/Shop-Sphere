@@ -92,9 +92,27 @@ export const LoginUser = async(req,res) => {
 
 export const Profile = async(req,res) => {
     try {
-        console.log('Profile Accessed  ==');
-        res.send('Profile Found');
+        console.log('Profile Accessed  ==',req.user);
+        const userProfile = await req.user;
+
+        res.status(200).json({
+            success : true,
+            message: " User Profile Founded ",
+            userProfile
+        })
     } catch (error) {
-        
+        console.log('error =',error);
+    }
+}
+
+export const LogoutUser = async(req,res) => {
+    try { 
+            res.clearCookie('jwtToken');
+            return res.status(200).json({
+                success : true,
+                message  : " User Logged Out "
+            })
+    } catch (error) {
+        console.log('error =',error);
     }
 }
