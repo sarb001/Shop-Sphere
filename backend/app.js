@@ -5,18 +5,17 @@ import UserRoute from './Routes/UserRoute.js';
 import cookieParser from 'cookie-parser';
 
 const app = express();
-
-app.use(express.urlencoded({ extended : true }));
-app.use(cookieParser());
-
 app.use(express.json({
     limit : '50mb'
 }));
-app.use('/api', UserRoute)
-
 
 dotenv.config();
 dbConnection();
+
+app.use(express.urlencoded({ extended : true }));
+
+app.use(cookieParser());
+app.use('/api', UserRoute)
 
 const PORT = 5000;
 app.listen(PORT , () => {

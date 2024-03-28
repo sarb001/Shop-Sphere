@@ -15,12 +15,12 @@ const Register = () => {
 
   const { loading ,  error  } = useSelector(state => state.user);
 
-   const HandleRegistration = (e) => {
+   const HandleRegistration = async(e) => {
       e.preventDefault();
       console.log('fname =',name);
       console.log('email =',email);
       console.log('password =',password);
-      dispatch(RegisterUser({name,email,password}));
+      await dispatch(RegisterUser({name,email,password}));
       navigate('/login');
    }
 

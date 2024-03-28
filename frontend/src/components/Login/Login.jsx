@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom'
+import { LoginUser } from '../actions/UserActions';
 
 const Login = () => {
 
     const [email,setemail] = useState('');
     const [password,setpassword] = useState('');
+    
+    const dispatch =  useDispatch();
+    const navigate =  useNavigate();
+    
+  const { loading ,  error  } = useSelector(state => state.user);
 
-   const Loginhandler = () => {}
+   const Loginhandler =  async(e) => {
+    e.preventDefault();
+    console.log('email =',email);
+    console.log('password =',password);
+    await dispatch(LoginUser({email,password}));
+    navigate('/');
+   }
 
   return (
     <div>
@@ -42,8 +55,7 @@ const Login = () => {
 
                     <div className='sm:text-center'>
                       <button className='p-2 bg-slate-900 text-white'> 
-                        {/* {loading ? "Signing in...."  : " Sign In "}  */}
-                        Sign In 
+                        {loading ? "Signing in...."  : " Sign In "} 
                       </button>
                     </div>
 

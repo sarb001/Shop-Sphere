@@ -31,6 +31,7 @@ export const RegisterUser = async(req,res) => {
 export const LoginUser = async(req,res) => {
     try {
         const { email ,password } =  req.body;
+        
         if(!email  ||!password){
             return res.status(404).json({
                 success : false,
@@ -80,10 +81,20 @@ export const LoginUser = async(req,res) => {
         res.status(200).json({
             success : true,
             Token,
+            message: " User LoggedIn Successfully ",
             user
         })
 
     } catch (error) {
             console.log('login error =',error);
     }   
+}
+
+export const Profile = async(req,res) => {
+    try {
+        console.log('Profile Accessed  ==');
+        res.send('Profile Found');
+    } catch (error) {
+        
+    }
 }

@@ -1,10 +1,10 @@
 import  { createSlice } from '@reduxjs/toolkit' ;
-import { RegisterUser } from '../actions/UserActions';
+import { LoginUser, RegisterUser } from '../actions/UserActions';
 
 const initialState = {
     loading  :false,
-    error :null,
-    users : []
+    error :  null,
+    users :  []
 }
 
 
@@ -26,17 +26,17 @@ const UserSlice = createSlice({
             state.loading = false
             state.error  = action.payload
     })
-    // .addCase(Login.pending   ,(state,action) => {
-    //         state.loading = true
-    //  })
-    // .addCase(Login.fulfilled ,(state,action) => {
-    //          state.loading = false
-    //          state.users = action.payload;
-    // })
-    //  .addCase(Login.rejected  ,(state,action) => {
-    //         state.loading = false
-    //         state.error  = action.payload
-    // })
+    .addCase(LoginUser.pending   ,(state,action) => {
+            state.loading = true
+     })
+    .addCase(LoginUser.fulfilled ,(state,action) => {
+             state.loading = false
+             state.users = action.payload;
+    })
+     .addCase(LoginUser.rejected  ,(state,action) => {
+            state.loading = false
+            state.error  = action.payload
+    })
 })
 
 export  default UserSlice.reducer ;
