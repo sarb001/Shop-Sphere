@@ -20,16 +20,16 @@ function App() {
 
    useEffect(() => {
       dispatch(ProfileAuthentication())
-   },[])
+   },[dispatch])
 
   return (
   <>
   <Navbar />
    <Routes>
-     <Route path='/' element= {<Home />}>  </Route>
+     <Route path='/' element= {isAuth ? <Home /> : <Login /> }>  </Route>
      <Route path='/register' element= {<Register />}>  </Route>
      <Route path='/login' element= {<Login />}>  </Route>
-     <Route path='/about' element= {<About />}>  </Route>
+     <Route path='/about' element= {isAuth ? <About /> : <Login />}>  </Route>
      {/* <Route path='/logout' element= {<About />}>  </Route> */}
      {/* <Route path='/userprofile' element= {<About />}>  </Route> */}
     </Routes> 
