@@ -20,7 +20,9 @@ const initialState = {
     })
     .addCase(getAllProducts.fulfilled ,(state,action) => {
             state.loading = false
+            console.log('state data 1 =',state.data);
             state.data = action.payload;
+            console.log('state data 2=',state.data);
             state.isAuth = true;
     })
     .addCase(getAllProducts.rejected  ,(state,action) => {
