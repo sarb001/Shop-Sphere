@@ -52,7 +52,7 @@ const Navbar = () => {
                         </li>
                         <li  className='py-2'> <FaGlobe /> </li>
                         <li  className='pt-2  md:pt-2 lg:font-medium'> 
-                            <NavLink to = "/">  List your Property  </NavLink>     
+                            <NavLink to = "/shop">  Shop  </NavLink>     
                         </li>
 
                         {!isAuth ? 

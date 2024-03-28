@@ -32,6 +32,7 @@ export  const  LoginUser = createAsyncThunk('api/login' , async(userData , { rej
 
 export const LogoutUser = createAsyncThunk('api/logout' , async( userData  , { rejectWithValue }) => {
         try {
+                        console.log('userdata logout =',userData);
                 const response = await axios.get('api/logout' , userData);
                 console.log('logout reponse =',response);
                 toast.success(response.data.message);

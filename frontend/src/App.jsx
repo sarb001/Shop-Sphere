@@ -10,6 +10,7 @@ import  'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { ProfileAuthentication } from './components/actions/UserActions'
+import Shop from './components/Shop/Shop'
 
 function App() {
 
@@ -30,8 +31,7 @@ function App() {
      <Route path='/register' element= {<Register />}>  </Route>
      <Route path='/login' element= {<Login />}>  </Route>
      <Route path='/about' element= {isAuth ? <About /> : <Login />}>  </Route>
-     {/* <Route path='/logout' element= {<About />}>  </Route> */}
-     {/* <Route path='/userprofile' element= {<About />}>  </Route> */}
+     <Route path='/shop' element= {isAuth ? <Shop /> : <Login />}>  </Route>
     </Routes> 
     <ToastContainer  autoClose = {300} />
   </>
