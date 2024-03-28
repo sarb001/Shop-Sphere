@@ -6,6 +6,8 @@ import { FaMoon } from "react-icons/fa6";
 import { IoSunny } from "react-icons/io5";
 import { useDispatch, useSelector  } from 'react-redux' ;
 import { LogoutUser, ProfileAuthentication } from '../actions/UserActions';
+import { FaShoppingCart } from "react-icons/fa";
+
 const Navbar = () => {
 
     const [showbar,setshowbar] = useState(false);
@@ -47,13 +49,17 @@ const Navbar = () => {
                         md:static md:bg-transparent  md:top-10 md:right-0 md:p-0
                         lg:block xl:block 2xl:block'>
                         <ul className='grid grid-rows-5  md :grid md:grid-cols-5 md:justify-items-center md:text-center'>
-                        <li  className='py-2 text-2xl' onClick={changemode}> 
-                            { darkmode ? <IoSunny /> : <FaMoon /> }    
-                        </li>
-                        <li  className='py-2'> <FaGlobe /> </li>
                         <li  className='pt-2  md:pt-2 lg:font-medium'> 
                             <NavLink to = "/shop">  Shop  </NavLink>     
                         </li>
+                        <li  className='py-2 text-2xl' onClick={changemode}> 
+                            { darkmode ? <IoSunny /> : <FaMoon /> }    
+                        </li>
+                        <li  className='py-2'> 
+                        {isAuth ? <NavLink  to = "/cart" >   <FaShoppingCart />  </NavLink>
+                         : 
+                        <FaGlobe /> }
+                         </li>
 
                         {!isAuth ? 
                             <>

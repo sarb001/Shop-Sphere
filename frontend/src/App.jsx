@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { ProfileAuthentication } from './components/actions/UserActions'
 import Shop from './components/Shop/Shop'
+import Cart from './components/Cart/Cart'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
      <Route path='/login' element= {<Login />}>  </Route>
      <Route path='/about' element= {isAuth ? <About /> : <Login />}>  </Route>
      <Route path='/shop' element= {isAuth ? <Shop /> : <Login />}>  </Route>
+     <Route path='/cart' element= {isAuth ? <Cart /> : <Login />}>  </Route>
     </Routes> 
     <ToastContainer  autoClose = {300} />
   </>
