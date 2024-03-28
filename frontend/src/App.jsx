@@ -33,7 +33,7 @@ function App() {
      {/* <Route path='/logout' element= {<About />}>  </Route> */}
      {/* <Route path='/userprofile' element= {<About />}>  </Route> */}
     </Routes> 
-    <ToastContainer />
+    <ToastContainer  autoClose = {300} />
   </>
   )
 }

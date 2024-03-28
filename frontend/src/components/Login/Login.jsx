@@ -15,9 +15,9 @@ const Login = () => {
 
    const Loginhandler =  async(e) => {
     e.preventDefault();
-    console.log('email =',email);
-    console.log('password =',password);
     await dispatch(LoginUser({email,password}));
+    setemail('');
+    setpassword('');
     navigate('/');
    }
 
