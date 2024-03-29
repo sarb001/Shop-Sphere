@@ -6,6 +6,7 @@ import ShoppingCard from './ShoppingCard';
 const Shop = () => {
 
     const  data  = useSelector(state => state?.products); 
+    console.log('data in shop =',data);
     const  loading  = useSelector(state => state?.products); 
     console.log('loading shop =',loading);
     const dispatch = useDispatch();
@@ -14,12 +15,12 @@ const Shop = () => {
            dispatch(getAllProducts());
     },[])
 
-
   return (
     <>
-         <div>
-             <div className='flex flex-wrap'>
-               {data?.data?.map((item) => 
+         <div className='m-8'> 
+          <h1> Products Length - {data?.filterproduct?.length} </h1>
+             <div className='flex flex-wrap m-4'>
+               {data?.filterproduct?.map((item) => 
                    <ShoppingCard  carditems = {item}   key = {item.id} />
                )}
              </div>
