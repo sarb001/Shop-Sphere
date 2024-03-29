@@ -1,16 +1,26 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { add } from '../slices/CartSlice';
+import checkitem from '../utils/checkitems';
 
 const ShoppingCard = ({carditems}) => {
 
     const {  id ,brand , category ,description , discountPercentage , price , images , rating , stock ,title } = carditems;
+    // console.log('carditems shopping  =',carditems);
 
-    const addtocart = () =>     {
-        //dispatch addition 
+    const dispatch = useDispatch();
+
+    const { cartitem } = useSelector(state => state?.cart);
+    const { quantity } = useSelector(state => state?.cart);
+
+    const addtocart = (data) => {
+        console.log('addto cart');
+        dispatch(add({data,quantity}));
     }
 
-    const checkitem = false;
-
+    const checkitemexists = checkitem(cartitem , carditems?.id); 
+    console.log('checkitem =',checkitemexists);
 
   return (
     <>
@@ -29,7 +39,7 @@ const ShoppingCard = ({carditems}) => {
         </div>
 
         <div>{
-            checkitem ? (
+            checkitemexists ? (
                 <>
                     <button  class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> 
                         <NavLink to = "/cart">  Move to Cart  </NavLink>

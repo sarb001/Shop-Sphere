@@ -22,18 +22,23 @@ const Navbar = () => {
         await  dispatch(LogoutUser());   
         navigate('/'); 
     }
+
     const shownavlinks = () => { setshowbar(!showbar)}
-    const changemode   = () => { 
-        setdarkmode(!darkmode)
-    }
+    const changemode   = () => { setdarkmode(!darkmode)}
 
     const { isAuth , loading } = useSelector(state => state.user);
     console.log('main auth =',isAuth);
   
-  
+    const cartProducts = useSelector(state => state?.cart?.cartitem);
+    console.log('products =',cartProducts);
+
+   const TotalQuantity = cartProducts?.reduce((acc,cur) =>  acc + cur.quantity , 0);
+    console.log('totalquantity =',TotalQuantity);
+
      useEffect(() => {
         dispatch(ProfileAuthentication())
      },[dispatch])
+
 
   return (
     <>
@@ -56,14 +61,15 @@ const Navbar = () => {
                             { darkmode ? <IoSunny /> : <FaMoon /> }    
                         </li>
                         <li  className='py-2'> 
-                        {isAuth ? <NavLink  to = "/cart" >   <FaShoppingCart />  </NavLink>
+                        {isAuth ? <NavLink  to = "/cart" >  
+                        <span className='flex self-center '> <FaShoppingCart /> {TotalQuantity} </span> 
+                        </NavLink>
                          : 
                         <FaGlobe /> }
                          </li>
 
                         {!isAuth ? 
                             <>
-
                             <li  className='py-2'> 
                                 <button className='bg-slate-100 text-blue-600 p-1'> 
                                 <NavLink to='/register'> Register </NavLink>
