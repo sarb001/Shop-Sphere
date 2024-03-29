@@ -55,7 +55,7 @@ const Navbar = () => {
                         lg:block xl:block 2xl:block'>
                         <ul className='grid grid-rows-5  md :grid md:grid-cols-5 md:justify-items-center md:text-center'>
                         <li  className='pt-2  md:pt-2 lg:font-medium'> 
-                            <NavLink to = "/shop">  Shop  </NavLink>     
+                            <NavLink to = "/product">  Shop  </NavLink>     
                         </li>
                         <li  className='py-2 text-2xl' onClick={changemode}> 
                             { darkmode ? <IoSunny /> : <FaMoon /> }    
