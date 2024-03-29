@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 
 const Cart = () => {
 
-    const cartitem = useSelector(state => state.cart.cartitems);
-    console.log('carttem =',cartitem);
+    const cartitem = useSelector(state => state.cart?.cartitem);
+    console.log('cart items =',cartitem);
 
   return (
     <>

@@ -17,35 +17,29 @@ const CartProductCard = ({carditems}) => {
 
   return (
     <>
-       <div class="max-w-sm rounded overflow-hidden shadow-lg m-4" key = {id}>
-            <div>
-                 <img class="w-full" src= {images[0]} alt ={title} />
-            </div>
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2"> {title} </div>
-            <p class="text-gray-700 text-base"> {description} </p>
-        </div>
-        <div class="px-6 pt-4 pb-2">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{price}</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">({discountPercentage?.toFixed()})% </span>
+        <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <img class="object-cover w-full rounded-t-lg h-56 md:h-auto md:w-36 md:rounded-none md:rounded-s-lg" src={images[0]} alt={title} />
+
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {title} 
+            </h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                {description}
+            </p>
         </div>
 
-        <div>
-                <>
+        <div>  
                     <button  onClick = {() => checkincrement(carditems)}   class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> Inc ++
                     </button>
-                </>
-                <>
+                
                  <button  onClick = {() => checkdecrement(carditems)}  class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> Dec -- </button>
-                </>
-       
-        </div>
 
-         <div>
-            <button onClick={() => RemovefromCart(id)}>  Remove from  Cart </button>
-         </div>
+                <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                onClick={() => RemovefromCart(id)}>  Remove from  Cart </button>
         </div>
+    </a>
+
     </>
   )
 }
