@@ -2,7 +2,8 @@ import User from "../models/User.js";
 import jwt from  'jsonwebtoken' ;
 import bcrypt from 'bcrypt' ;
 import Razorpay from 'razorpay' ;
-
+import Payment from '../models/Payment.js' ;
+import crypto from 'crypto' ;
 
 export const RegisterUser = async(req,res) => {
     try {
@@ -119,10 +120,19 @@ export const LogoutUser = async(req,res) => {
     }
 }
 
-export const Checkout = async(req,res) => {
-    console.log('inside checkottt')
+export const GetKey = async(req,res) => {
     try {
-            console.log('checkout body =',req);
+            res.json({
+                key_id : process.env.RAZORPAY_KEY_ID
+            })
+    } catch (error) {   
+        console.log('error =',error);
+    }
+}
+
+
+export const Checkout = async(req,res) => {
+    try {
             const instance = new Razorpay({
                 key_id : process.env.RAZORPAY_KEY_ID,
                 key_secret : process.env.RAZORPAY_KEY_SECRET,
@@ -142,12 +152,42 @@ export const Checkout = async(req,res) => {
     }   
 }
 
-export const GetKey = async(req,res) => {
+
+export const PaymentVerification = async(req,res) => {
+    console.log('inside payment verification ==');
     try {
-            res.json({
-                key_id : process.env.RAZORPAY_KEY_ID
-            })
-    } catch (error) {   
-        console.log('error =',error);
+        const { razorpay_order_id  , razorpay_payment_id , razorpay_signature } = req.body;
+        console.log('fetching 3=', razorpay_order_id  , razorpay_payment_id , razorpay_signature );
+
+        const body = razorpay_order_id + "|" + razorpay_payment_id;
+        console.log('body in verf =',body);
+
+        const expectedSignature = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+        .update(body.toString())
+        .digest("hex");
+
+    const isAuthentic = expectedSignature === razorpay_signature;
+    console.log('isAuthentic =',isAuthentic);
+
+    if (isAuthentic) {
+
+        await Payment.create({
+            razorpay_order_id,
+            razorpay_payment_id,
+            razorpay_signature,
+        });
+        console.log('before redir =');
+        res.redirect(
+            `http://localhost:5173/paymentsuccess?reference=${razorpay_payment_id}`
+            );
+        console.log('after redir =');
+    } else {
+        res.status(400).json({
+            success: false,
+        });
     }
+    
+    } catch (error) {
+            console.log('payment verf. -',error);
+    }   
 }

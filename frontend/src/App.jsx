@@ -13,6 +13,7 @@ import { ProfileAuthentication } from './components/actions/UserActions'
 import Shop from './components/Shop/Shop'
 import Cart from './components/Cart/Cart'
 import Product from './components/Products/Product'
+import PaymentSuccess from './components/Payment/PaymentSuccess'
 
 function App() {
 
@@ -35,6 +36,8 @@ function App() {
      <Route path='/about' element= {isAuth ? <About /> : <Login />}>  </Route>
      <Route path='/product' element= {isAuth ? <Product /> : <Login />}>  </Route>
      <Route path='/cart' element= {isAuth ? <Cart /> : <Login />}>  </Route>
+     <Route path='/paymentsuccess' element= {isAuth ? <PaymentSuccess /> : <Login />}>  </Route>
+     
     </Routes> 
     <ToastContainer  autoClose = {300} />
   </>

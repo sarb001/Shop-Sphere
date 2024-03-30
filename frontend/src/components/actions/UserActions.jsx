@@ -58,15 +58,43 @@ export const Checkout = createAsyncThunk('api/checkout' , async(userData  , { re
         try {
                 console.log('checkout userdata =',userData);
                 const { TotalPrice } = userData;
-                // const  keydata   = await axios.get('api/paymentkey');
-                // console.log('key= =',keydata.data?.key_id);
+                const  keydata   = await axios.get('api/paymentkey');
+                console.log('key= =',keydata.data?.key_id);
 
-                // const  keyid = keydata.data?.key_id;
+                const  keyid = keydata.data?.key_id;
 
                 console.log('order 11 1 =',TotalPrice);
                 const response  = await axios.post('api/checkout', {TotalPrice});
+                const orderamount = response.data.order.amount;
+                const orderid = response.data.order.id;
+                console.log('order ==',orderamount);
+                console.log('order ==',orderid);
 
-                console.log('order ==',response);
+                const options = {
+                        key: keyid,
+                        amount: orderamount,
+                        currency: "INR",
+                        name: "My E-Commarce",
+                        description: "Test Transaction",
+                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAHXPluq6GtTRPDIHRv5kJPy86uFjp5sO7hg&usqp=CAU",
+                        order_id: orderid,
+                        callback_url: "http://localhost:5000/api/paymentverification",
+                        prefill: {
+                            name: "Abhi Sucks",
+                            email: "abhi.sucks@example.com",
+                            contact: "7807897890"
+                        },
+                        notes: {
+                            "address": "Razorpay Corporate Office"
+                        },
+                        theme: {
+                            color: "#3399cc"
+                        }
+                };
+
+                const razor = new window.Razorpay(options);
+                    razor.open();
+                    return true
         
         } catch (error) {
                 console.log('error =',error);
