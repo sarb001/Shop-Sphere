@@ -7,7 +7,6 @@ import checkitem from '../utils/checkitems';
 const ShoppingCard = ({carditems}) => {
 
     const {  id ,brand , category ,description , discountPercentage , price , images , rating , stock ,title } = carditems;
-    // console.log('carditems shopping  =',carditems);
 
     const dispatch = useDispatch();
 

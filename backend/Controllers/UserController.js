@@ -1,6 +1,8 @@
 import User from "../models/User.js";
 import jwt from  'jsonwebtoken' ;
 import bcrypt from 'bcrypt' ;
+import Razorpay from 'razorpay' ;
+
 
 export const RegisterUser = async(req,res) => {
     try {
@@ -113,6 +115,39 @@ export const LogoutUser = async(req,res) => {
                 message  : " User Logged Out "
             })
     } catch (error) {
+        console.log('error =',error);
+    }
+}
+
+export const Checkout = async(req,res) => {
+    console.log('inside checkottt')
+    try {
+            console.log('checkout body =',req);
+            const instance = new Razorpay({
+                key_id : process.env.RAZORPAY_KEY_ID,
+                key_secret : process.env.RAZORPAY_KEY_SECRET,
+            })
+            const options = {
+                amount : Number(req.body.TotalPrice * 100),
+                currency : 'INR'
+            }
+            const order = await instance.orders.create(options);
+            res.status(200).json({
+                success : true,
+                order,
+            })
+
+    } catch (error) {
+        console.log('error =',error);
+    }   
+}
+
+export const GetKey = async(req,res) => {
+    try {
+            res.json({
+                key_id : process.env.RAZORPAY_KEY_ID
+            })
+    } catch (error) {   
         console.log('error =',error);
     }
 }

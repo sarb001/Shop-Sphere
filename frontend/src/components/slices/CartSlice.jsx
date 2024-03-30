@@ -1,4 +1,5 @@
 import   { createSlice } from '@reduxjs/toolkit' ;
+import { Checkout } from '../actions/UserActions';
 
 const initialState = {
     cartitem : [],
@@ -40,8 +41,19 @@ export const CartSlice = createSlice({
          findproduct.quantity = findproduct.quantity - 1;
        }
     },
-    extraReducers  : (builder)  => {
-    }
+    extraReducers : builder => builder
+    .addCase(Checkout.pending   ,(state,action) => {
+             state.loading = true;
+    })
+    .addCase(Checkout.fulfilled ,(state,action) => {
+            state.loading = false;
+            state.isAuth = true;
+            state.checked = true;
+    })
+    .addCase(Checkout.rejected  ,(state,action) => {
+            state.loading = false
+            state.error  = action.payload
+    })
 })
 
 export const { add , remove , incrementproduct , decrementproduct } = CartSlice.actions

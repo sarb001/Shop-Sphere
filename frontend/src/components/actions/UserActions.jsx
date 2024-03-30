@@ -43,7 +43,6 @@ export const LogoutUser = createAsyncThunk('api/logout' , async( userData  , { r
         }
 })
 
-
 export const ProfileAuthentication = createAsyncThunk('api/profile' , async( userData  ,{ rejectWithValue }) => {
         try {
                 const response = await axios.get('api/profile' , userData);
@@ -53,4 +52,24 @@ export const ProfileAuthentication = createAsyncThunk('api/profile' , async( use
                 console.log('error = ',error);
                 return rejectWithValue(error.response.data.message || "Something  went Wrong");
         }       
+})
+
+export const Checkout = createAsyncThunk('api/checkout' , async(userData  , { rejectWithValue }) => {
+        try {
+                console.log('checkout userdata =',userData);
+                const { TotalPrice } = userData;
+                // const  keydata   = await axios.get('api/paymentkey');
+                // console.log('key= =',keydata.data?.key_id);
+
+                // const  keyid = keydata.data?.key_id;
+
+                console.log('order 11 1 =',TotalPrice);
+                const response  = await axios.post('api/checkout', {TotalPrice});
+
+                console.log('order ==',response);
+        
+        } catch (error) {
+                console.log('error =',error);
+                return rejectWithValue(error.response.data.message || "Something  went Wrong");
+        }
 })
