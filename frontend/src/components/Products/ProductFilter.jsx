@@ -31,17 +31,16 @@ const ProductFilter = () => {
     }
 
     const handlediscountchange = (e) => {
-        setcheckbox(!checkbox);
+        const inversecheckbox   = !checkbox;
+        setcheckbox(inversecheckbox);
         const discountvalue = e.target.value;
-        console.log('target value - ',discountvalue);
-        console.log('discount change-');
-        dispatch(filterbyDiscount({discountvalue}));
+        dispatch(filterbyDiscount({discountvalue , inversecheckbox }));
     }
 
     const handlesecondcountchange = (e) => {
         const nextcheckboxState =  !checkbox1;
         setcheckbox1(nextcheckboxState);
-        console.log('checkbox1 value -',nextcheckboxState);
+        // console.log('checkbox1 value -',nextcheckboxState);
         const discountvalue1 = e.target.value;
         dispatch(filterbyDiscount1({discountvalue1,nextcheckboxState}));
     }

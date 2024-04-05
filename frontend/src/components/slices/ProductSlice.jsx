@@ -38,24 +38,32 @@ const initialState = {
             }, 
     
             filterbyDiscount(state,action){
-                const { discountvalue  }  = action.payload;
-                if(discountvalue === '10'){         //  more than 10 
+                const { discountvalue ,inversecheckbox }  = action.payload;
+
+                console.log('checkbox',inversecheckbox);
+
+                if(inversecheckbox && discountvalue === '10'){         //  more than 10 
                     console.log('state data 1-',state.data);
                       state.filterproduct = [...state.data].filter((item) => 
                          Number(item.discountPercentage.toFixed()) > Number(discountvalue)
                         )
                       console.log('filter state 1-',state.filterproduct);
                 }
+                else{
+                    state.filterproduct = state.data;
+                }
             },
             // less than 
             filterbyDiscount1(state,action){
                 const { discountvalue1 , nextcheckboxState }  = action.payload;
-                
+
+                console.log('next-checkbox',nextcheckboxState);
+
                 if(nextcheckboxState && discountvalue1 === '10'){
                     state.filterproduct = [...state.data].filter((item) => 
                      Number(item.discountPercentage?.toFixed()) < Number(discountvalue1)
                     )
-                    console.log('filter state 2-',state.filterproduct);
+                    console.log('next filter',state.filterproduct);
                 }else{
                     state.filterproduct = state.data;
                 }
