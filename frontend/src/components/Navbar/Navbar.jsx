@@ -28,7 +28,7 @@ const Navbar = () => {
 
     const { isAuth , loading , users } = useSelector(state => state.user);
     console.log('main auth =',isAuth);
-    console.log('users ',users);
+    console.log('users main ',users);
   
     const cartProducts = useSelector(state => state?.cart?.cartitem);
     console.log('products =',cartProducts);
