@@ -16,6 +16,7 @@ const UserSlice = createSlice({
         
     },
     extraReducers : builder => builder
+
     .addCase(RegisterUser.pending   ,(state,action) => {
             state.loading = true
      })
@@ -27,6 +28,7 @@ const UserSlice = createSlice({
             state.loading = false
             state.error  = action.payload
     })
+
 
     .addCase(LoginUser.pending   ,(state,action) => {
             state.loading = true
@@ -40,6 +42,7 @@ const UserSlice = createSlice({
              state.loading = false
              state.error = action.payload
      })
+
 
      .addCase(LogoutUser.pending  ,(state,action) => {
             state.loading = false
@@ -55,6 +58,7 @@ const UserSlice = createSlice({
             state.error  = action.payload
     })
 
+    
     .addCase(ProfileAuthentication.pending   ,(state,action) => {
             state.loading = true;
             state.isAuth = false

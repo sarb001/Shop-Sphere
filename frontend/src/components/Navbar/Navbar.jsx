@@ -26,8 +26,9 @@ const Navbar = () => {
     const shownavlinks = () => { setshowbar(!showbar)}
     const changemode   = () => { setdarkmode(!darkmode)}
 
-    const { isAuth , loading } = useSelector(state => state.user);
+    const { isAuth , loading , users } = useSelector(state => state.user);
     console.log('main auth =',isAuth);
+    console.log('users ',users);
   
     const cartProducts = useSelector(state => state?.cart?.cartitem);
     console.log('products =',cartProducts);
@@ -94,8 +95,7 @@ const Navbar = () => {
 
                         <li  className='py-2'>  
                             <button className='bg-slate-100 text-blue-600 p-1' >  
-                            {/* { loading === true ? "<h1> Loading... </h1>" :  <> {user?.fname} </>}    */}
-                                    Aman  
+                            { loading === true ? "<h1> Loading... </h1>" :  <> {users?.userProfile?.name} </>}   
                             </button> 
                         </li> 
                             </> 
