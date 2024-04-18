@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import {  NavLink ,useNavigate } from 'react-router-dom' ;
-import { FaGlobe } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { FaMoon } from "react-icons/fa6";
 import { IoSunny } from "react-icons/io5";
 import { useDispatch, useSelector  } from 'react-redux' ;
 import { LogoutUser, ProfileAuthentication } from '../actions/UserActions';
-import { FaShoppingCart } from "react-icons/fa";
+
 
 const Navbar = () => {
 
-    const [showbar,setshowbar] = useState(false);
-    
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -22,8 +18,6 @@ const Navbar = () => {
         navigate('/'); 
     }
 
-    const shownavlinks = () => { setshowbar(!showbar)}
-    const changemode   = () => { setdarkmode(!darkmode)}
 
     const { isAuth , loading , users } = useSelector(state => state.user);
     console.log('main auth =',isAuth);
@@ -58,8 +52,7 @@ const Navbar = () => {
         </div> */}
 
 
-
-        <nav class="bg-black text-white dark:bg-gray-900">
+        <nav class="">
 
              <div class="max-w-screen-xl flex flex-row items-center justify-between mx-auto p-4">
                     <div>
@@ -77,39 +70,38 @@ const Navbar = () => {
 
                 <div className ="hidden w-full md:block md:w-auto" id="navbar-default">
 
-                    <ul class = " absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-8  border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
+                    <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-8  border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
                       
                         <li>
-                            <a href = "/product" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 md:text-white  " aria-current="page">
+                            <a href = "/product" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 md:text-black  " aria-current="page">
                                 Shop
                             </a>
                         </li>
 
                         <li>
-                            <a href="/cart" class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 md:text-white  md:p-0 ">
-                            Cart
+                            <a href="/cart" class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 md:text-black md:p-0 ">
+                                Cart
                             </a>
                         </li>
 
                         <li>
-                        <button  onClick = {handleDarkMode} >
-                             {darkmode ? <IoSunny /> :  <FaMoon /> }
-                        </button> 
+                             <button className='block text-xl md:text-black' onClick = {handleDarkMode}  > 
+                               {darkmode ? "dark" : "light"}
+                                 {/* {darkmode ? <IoSunny /> :  <FaMoon /> } */}
+                             </button> 
                         </li>
 
                         <li>
                              {isAuth ?
-                            <button className='bg-slate-100 text-blue-600 p-1'
-                                onClick={LogoutHandler}>
-                                {loading ? "...." : "Logout"}
-                            </button> 
-                            :
-                            <div>  
-                                <NavLink to = "/login">  Login  </NavLink>
-                            </div> 
-                            }
+                             <a onClick = {LogoutHandler}  class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 md:text-black md:p-0 ">
+                              {loading ? "...." : "Logout"}
+                             </a>
+                             :
+                             <a href="/login" class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 md:text-black md:p-0 ">
+                             Cart
+                             </a> }
+                        
                         </li>
-
                     </ul>
 
                 </div>
