@@ -59,7 +59,7 @@ const Navbar = () => {
 
 
 
-            <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <nav class="bg-black text-white dark:bg-gray-900">
 
              <div class="max-w-screen-xl flex flex-row items-center justify-between mx-auto p-4">
                     <div>
@@ -77,16 +77,16 @@ const Navbar = () => {
 
                 <div className ="hidden w-full md:block md:w-auto" id="navbar-default">
 
-                    <ul class=" absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-8  border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 ">
+                    <ul class = " absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-8  border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
                       
                         <li>
-                            <a href="/product" class="block py-2 px-3 text-black rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">
+                            <a href = "/product" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 md:text-white  " aria-current="page">
                                 Shop
                             </a>
                         </li>
 
                         <li>
-                            <a href="/cart" class="block py-2 px-3  text-gray-900 rounded hover:bg-gray-100 md:border-0 md:text-black md:p-0 ">
+                            <a href="/cart" class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 md:text-white  md:p-0 ">
                             Cart
                             </a>
                         </li>
@@ -96,7 +96,6 @@ const Navbar = () => {
                              {darkmode ? <IoSunny /> :  <FaMoon /> }
                         </button> 
                         </li>
-
 
                         <li>
                              {isAuth ?
@@ -116,7 +115,6 @@ const Navbar = () => {
                 </div>
             </div>
             </nav>
-
 
     </>
   )
