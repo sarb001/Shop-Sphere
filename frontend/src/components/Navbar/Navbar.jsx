@@ -52,7 +52,7 @@ const Navbar = () => {
         </div> */}
 
 
-        <nav class="">
+        <nav class="bg-black text-white">
 
              <div class="max-w-screen-xl flex flex-row items-center justify-between mx-auto p-4">
                     <div>
@@ -73,19 +73,19 @@ const Navbar = () => {
                     <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-8  border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
                       
                         <li>
-                            <a href = "/product" class="block py-2 px-3 text-black rounded md:bg-transparent md:p-0 md:text-black  " aria-current="page">
+                            <a href = "/product" class="block py-2 px-3 text-black rounded md:text-white md:p-0   " aria-current="page">
                                 Shop
                             </a>
                         </li>
 
                         <li>
-                            <a href="/cart" class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 md:text-black md:p-0 ">
+                            <a href="/cart" class="block md:text-white py-2 px-3 text-black md:p-0 ">
                                 Cart
                             </a>
                         </li>
 
                         <li>
-                             <button className='block text-xl md:text-black' onClick = {handleDarkMode}  > 
+                             <button className='block text-xl text-black md:text-white' onClick = {handleDarkMode}  > 
                                {darkmode ? "dark" : "light"}
                                  {/* {darkmode ? <IoSunny /> :  <FaMoon /> } */}
                              </button> 
@@ -93,13 +93,14 @@ const Navbar = () => {
 
                         <li>
                              {isAuth ?
-                             <a onClick = {LogoutHandler}  class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 md:text-black md:p-0 ">
-                              {loading ? "...." : "Logout"}
-                             </a>
+                                <a onClick = {LogoutHandler}  class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 text-black md:p-0 md:text-white ">
+                                {loading ? "...." : "Logout"}
+                                </a>
                              :
-                             <a href="/login" class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 md:text-black md:p-0 ">
-                             Cart
-                             </a> }
+                                <a href="/login" class="block py-2 px-3  md:border-0 text-black md:p-0 md:text-white ">
+                                Login
+                                </a> 
+                             }
                         
                         </li>
                     </ul>
