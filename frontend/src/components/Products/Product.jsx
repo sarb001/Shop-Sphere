@@ -5,14 +5,12 @@ import Shop from '../Shop/Shop'
 const Product = () => {
   return (
     <>
-      gefdw
-
+       <div className='grid grid-cols-5 justify-between my-6'>
+         <div className='col-span-1'> <ProductFilter /> </div> 
+         <div className='col-span-4'> <Shop /> </div>   
+      </div> 
     </>
   )
 }
 
 export default Product
-      {/* <div className='grid grid-cols-[0.8fr,2.6fr]'>
-         <span> <ProductFilter /> </span>
-         <span> <Shop /> </span>
-      </div> */}

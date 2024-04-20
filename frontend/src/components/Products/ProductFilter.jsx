@@ -51,12 +51,9 @@ const ProductFilter = () => {
 
   return (
     <>
-        <div className='m-4'>   
-        <div> 
-
         <div>
-            <div> Filter by Category =   
-             </div>
+            <div> Filter by Category =  </div>
+
             <span>
                  {categories?.map((item) => {
                     return (
@@ -99,8 +96,7 @@ const ProductFilter = () => {
            </div>
 
         </div>
-    </div>
-        </div>
+    
     </>
   )
 }

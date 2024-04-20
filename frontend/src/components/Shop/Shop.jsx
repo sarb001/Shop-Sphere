@@ -17,9 +17,9 @@ const Shop = () => {
 
   return (
     <>
-         <div className='m-8'> 
-          <h1> Products Length - {data?.filterproduct?.length} </h1>
-             <div className='flex flex-wrap m-4'>
+         <div> 
+          <h1> Showing Products - {data?.filterproduct?.length} </h1>
+             <div className = 'flex flex-wrap justify-around bg-slate-600 ' >
                {data?.filterproduct?.map((item) => 
                    <ShoppingCard  carditems = {item}   key = {item.id} />
                )}
