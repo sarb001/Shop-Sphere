@@ -30,7 +30,7 @@ const Cart = () => {
 
           <div style = {{display:'grid' , gridTemplateRows :'1.6fr 0.4fr'}}>
                 
-                  <div className='flex flex-wrap'>
+                  <div className='flex flex-wrap justify-evenly '>
                       {cartitems?.map((data) => {
                               return (
                               <>
