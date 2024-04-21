@@ -28,7 +28,7 @@ const Cart = () => {
 
         {cartitems?.length > 0 ? 
 
-          <div style = {{display:'grid' , gridTemplateRows :'1.6fr 0.4fr'}}>
+      <div  className = 'grid grid-rows-[1.6fr,0.4fr] lg:grid-cols-2'>
                 
                   <div className='flex flex-wrap justify-evenly '>
                       {cartitems?.map((data) => {
@@ -40,7 +40,7 @@ const Cart = () => {
                           })}
                   </div>
 
-                  <div class="flex flex-col items-center pb-10">
+                  <div class="flex flex-col items-center pb-10  lg:sticky lg:top-[100px]">
     
                     <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         
