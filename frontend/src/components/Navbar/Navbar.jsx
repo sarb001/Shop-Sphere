@@ -43,15 +43,6 @@ const Navbar = () => {
 
   return (
     < >
-
-        {/* <div className='
-        flex flex-row w-full  justify-between bg-slate-600 text-white  p-3 cursor-pointer
-        dark:text-white  dark:bg-black
-        '>
-           
-        </div> */}
-
-
         <nav class="bg-black text-white">
 
              <div class="max-w-screen-xl flex flex-row items-center justify-between mx-auto p-4">
@@ -73,7 +64,7 @@ const Navbar = () => {
                     <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-6 md:mt-0 border  md:flex-row  bg-black text-white   md:space-x-8 rtl:space-x-reverse  md:border-0 ">
                       
                         <li>
-                            <a href = "/product" class="block py-2 px-3   rounded  md:p-0   " aria-current="page">
+                            <a href = "/product" class="block py-2 px-3   rounded  md:p-0" aria-current="page">
                                 Shop
                             </a>
                         </li>
@@ -85,10 +76,10 @@ const Navbar = () => {
                         </li>
 
                         <li>
-                             <button className='block text-xl ' onClick = {handleDarkMode}  > 
+                             <div className='block pl-2.5 text-[20px]' onClick = {handleDarkMode}  > 
                                {darkmode ? "dark" : "light"}
                                  {/* {darkmode ? <IoSunny /> :  <FaMoon /> } */}
-                             </button> 
+                             </div> 
                         </li>
 
                         <li>
