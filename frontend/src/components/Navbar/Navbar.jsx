@@ -70,22 +70,22 @@ const Navbar = () => {
 
                 <div className ="hidden w-full md:block md:w-auto" id="navbar-default">
 
-                    <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-8  border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
+                    <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-6 md:mt-0 border  md:flex-row  bg-black text-white   md:space-x-8 rtl:space-x-reverse  md:border-0 ">
                       
                         <li>
-                            <a href = "/product" class="block py-2 px-3 text-black rounded md:text-white md:p-0   " aria-current="page">
+                            <a href = "/product" class="block py-2 px-3   rounded  md:p-0   " aria-current="page">
                                 Shop
                             </a>
                         </li>
 
                         <li>
-                            <a href="/cart" class="block md:text-white py-2 px-3 text-black md:p-0 ">
+                            <a href="/cart" class="block  py-2 px-3  md:p-0 ">
                                 Cart
                             </a>
                         </li>
 
                         <li>
-                             <button className='block text-xl text-black md:text-white' onClick = {handleDarkMode}  > 
+                             <button className='block text-xl ' onClick = {handleDarkMode}  > 
                                {darkmode ? "dark" : "light"}
                                  {/* {darkmode ? <IoSunny /> :  <FaMoon /> } */}
                              </button> 
@@ -93,11 +93,11 @@ const Navbar = () => {
 
                         <li>
                              {isAuth ?
-                                <a onClick = {LogoutHandler}  class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0 text-black md:p-0 md:text-white ">
+                                <a onClick = {LogoutHandler}  class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0  md:p-0 ">
                                 {loading ? "...." : "Logout"}
                                 </a>
                              :
-                                <a href="/login" class="block py-2 px-3  md:border-0 text-black md:p-0 md:text-white ">
+                                <a href="/login" class="block py-2 px-3  md:border-0 md:p-0 ">
                                 Login
                                 </a> 
                              }

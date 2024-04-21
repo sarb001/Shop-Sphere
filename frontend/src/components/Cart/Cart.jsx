@@ -24,7 +24,7 @@ const Cart = () => {
 
   return (
     <>
-      <div className='px-12 my-6'>
+      <div className='px-12 my-6 text-center'>
 
         {cartitems?.length > 0 ? 
 
@@ -64,8 +64,9 @@ const Cart = () => {
           </div>
                     : 
             <>
-            <h5> No  Products Available </h5>  
-            <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">  <NavLink to= '/product'>Buy Products  </NavLink> </button>
+              <h5> Cart is Empty </h5>  
+              <button className ="bg-white w-52  hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> 
+              <NavLink to= '/product'> Lets' Shopping </NavLink> </button>
             </>
     }
     </div>
