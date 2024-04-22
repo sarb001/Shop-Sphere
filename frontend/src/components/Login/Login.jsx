@@ -22,7 +22,7 @@ const Login = () => {
    }
 
   return (
-    <div>
+    <div className='flex justify-center mt-28'>
         <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
 
           <form class="space-y-6"  onSubmit={Loginhandler}>

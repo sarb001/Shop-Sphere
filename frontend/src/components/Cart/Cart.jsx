@@ -24,7 +24,7 @@ const Cart = () => {
 
   return (
     <>
-      <div className='px-12 my-6 text-center'>
+      <div className='px-12 my-6 text-center lg:pt-8 '>
 
         {cartitems?.length > 0 ? 
 
@@ -40,23 +40,27 @@ const Cart = () => {
                           })}
                   </div>
 
-                  <div class="flex flex-col items-center pb-10  lg:sticky lg:top-[100px]">
+                  <div class="flex flex-col items-center pb-10 sticky  lg:fixed  lg:right-[-245px] lg:top-[100px]">
     
-                    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
                         
                         <div>
-                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"> Price Details </h5>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> Price Details </h5>
                         </div>
 
-                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
-                        Total Quantity = {TotalQuantity} 
+                        <p className ="mb-3 font-medium">
+                           <span> Total Quantity   </span>
+                           <span className='font-extrabold'> {TotalQuantity}   </span>
                         </p>
 
-                        <a href="#" class="inline-flex font-medium items-center text-blue-600 hover:underline">
-                          TotalPrice =  Rs.{TotalPrice}
-                        </a>
+                        <p className = "inline-flex">
+                           <span>  TotalPrice   </span>
+                           <span className = 'font-extrabold'>  Rs.{TotalPrice} </span>
+                        </p>
 
-                        <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={handlepayment}> Checkout </button>
+                          <div className='p-3'>
+                             <button className ="bg-white  w-1/2 hover:bg-gray-100 text-gray-800 font-extrabold py-2 px-4 border border-gray-400 rounded shadow" onClick={handlepayment}> Checkout </button>
+                          </div>
                     </div>
               
                   </div>
@@ -65,7 +69,7 @@ const Cart = () => {
                     : 
             <>
               <h5> Cart is Empty </h5>  
-              <button className ="bg-white w-52  hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> 
+              <button className ="bg-white w-52  hover:bg-gray-100 text-gray-800 font-extrabold py-2 px-4 border border-gray-400 rounded shadow"> 
               <NavLink to= '/product'> Lets' Shopping </NavLink> </button>
             </>
     }

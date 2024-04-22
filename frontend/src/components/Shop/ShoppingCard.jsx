@@ -33,14 +33,14 @@ const ShoppingCard = ({carditems}) => {
                 <p class="mb-3 font-normal">
                     {description}
                 </p>
-                <p class="mb-3 font-normal">
-                Rs.{price}
+                <p class="mb-3 font-bold">
+                 Rs.{price}
                 </p>
-                <p class="mb-3 font-normal">
-                    {category}
+                <p class="mb-3 font-bold">
+                   Category = {category}
                 </p>
-                <p class="mb-3 font-normal">
-                ({discountPercentage?.toFixed()})%
+                <p class="mb-3 font-bold">
+                 Discount - ({discountPercentage?.toFixed()})%
                 </p>
             
        

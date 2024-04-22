@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {  NavLink ,useNavigate } from 'react-router-dom' ;
-import { FaMoon } from "react-icons/fa6";
-import { IoSunny } from "react-icons/io5";
 import { useDispatch, useSelector  } from 'react-redux' ;
 import { LogoutUser, ProfileAuthentication } from '../actions/UserActions';
-
+import { PiSunDimFill } from "react-icons/pi";
 
 const Navbar = () => {
 
@@ -77,18 +75,18 @@ const Navbar = () => {
 
                         <li>
                              <div className='block pl-2.5 text-[20px]' onClick = {handleDarkMode}  > 
-                               {darkmode ? "dark" : "light"}
-                                 {/* {darkmode ? <IoSunny /> :  <FaMoon /> } */}
+                               {/* {darkmode ? "dark" : "light"} */}
+                               <PiSunDimFill />
                              </div> 
                         </li>
 
                         <li>
                              {isAuth ?
-                                <a onClick = {LogoutHandler}  class="block py-2 px-3 rounded  text-whitehover:bg-gray-100 md:border-0  md:p-0 ">
+                                <a onClick = {LogoutHandler}  class="block py-4 px-3 md:border-0  md:p-0 cursor-pointer hover:bg-white  hover:text-black ">
                                 {loading ? "...." : "Logout"}
                                 </a>
                              :
-                                <a href="/login" class="block py-2 px-3  md:border-0 md:p-0 ">
+                                <a href="/login" class="block py-2 px-3  md:border-0 md:p-0 cursor-pointer hover:bg-white  hover:text-black p-2">
                                 Login
                                 </a> 
                              }
