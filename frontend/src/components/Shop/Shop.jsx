@@ -17,7 +17,7 @@ const Shop = () => {
 
   return (
     <>
-         <div> 
+         <div className='lg:relative lg:top-10 lg:z-0'> 
           <div className='text-xl flex justify-center font-bold'> Showing Products - {data?.filterproduct?.length} </div>
              <div className = 'flex flex-wrap justify-around p-1' >
                {data?.filterproduct?.map((item) => 

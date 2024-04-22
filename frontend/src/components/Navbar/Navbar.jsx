@@ -43,7 +43,7 @@ const Navbar = () => {
 
   return (
     < >
-        <nav class="bg-black text-white">
+        <nav className ="bg-black text-white lg:fixed lg:top-0">
 
              <div class="max-w-screen-xl flex flex-row items-center justify-between mx-auto p-4">
                     <div>
