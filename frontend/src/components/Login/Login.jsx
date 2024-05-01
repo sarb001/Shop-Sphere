@@ -2,24 +2,31 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom'
 import { LoginUser } from '../actions/UserActions';
+import { guestCredentials } from '../utils/constants';
 
 const Login = () => {
 
     const [email,setemail] = useState('');
     const [password,setpassword] = useState('');
-    
+
     const dispatch =  useDispatch();
     const navigate =  useNavigate();
     
   const { loading ,  error  } = useSelector(state => state.user);
 
-   const Loginhandler =  async(e) => {
-    e.preventDefault();
-    await dispatch(LoginUser({email,password}));
-    setemail('');
-    setpassword('');
-    navigate('/');
-   }
+      const Loginhandler =  async(e) => {
+        e.preventDefault();
+         dispatch(LoginUser({email,password}));
+          setemail('');
+          setpassword('');
+          navigate('/');
+      }
+
+      const handlecredentials = () => {
+          setemail(guestCredentials?.email);
+          setpassword(guestCredentials?.password);
+          console.log('email |passss =',email,password);
+      }
 
   return (
     <div className='flex justify-center mt-28'>
@@ -46,6 +53,13 @@ const Login = () => {
 
               <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               {loading ? "Signing in...."  : "  Login to your account "} 
+              </button>
+
+
+              <button type = "button" class="w-full text-white bg-orange-500 hover:bg-orange-900  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-500  dark:hover:bg-orange-700  dark:focus:bg-orange-800 "
+              onClick={handlecredentials}
+              >
+                  Guest Credentials 
               </button>
 
               <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
