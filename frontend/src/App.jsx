@@ -22,6 +22,7 @@ function App() {
    useEffect(() => {
     initFlowbite();
   })
+  
   const { isAuth , loading } = useSelector(state => state.user);
   console.log('main auth =',isAuth);
 

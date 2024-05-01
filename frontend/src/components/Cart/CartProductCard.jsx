@@ -29,13 +29,14 @@ const CartProductCard = ({carditems}) => {
   return (
     <>
 
-        <div  class="flex flex-col items-center bg-white border  border-black rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 my-6   dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
+        <div  className = " z-20 flex flex-col items-center bg-white border  border-black rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 my-6   dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
            
          
-                <img class="object-contain w-full rounded-t-lg h-52  md:h-auto md:w-48  md:rounded-none md:rounded-s-lg" src={images[0]} alt={title} />
+                <img className = "object-contain w-full rounded-t-lg h-52  md:h-auto md:w-48  md:rounded-none md:rounded-s-lg" src={images[0]} alt={title} />
                 
              <div>
                 <div class="flex flex-col justify-between p-4 leading-normal">
+
                     <div>
                         <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {title}  </h3>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -45,17 +46,16 @@ const CartProductCard = ({carditems}) => {
                     </div>
 
                     <div className='flex flex-row py-4'>
-                        <Button color="gray"  onClick = {() => checkincrement(carditems)}   className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer "> Inc ++ </Button>
+                        <Button color = "gray"  onClick = {() => checkincrement(carditems)}   className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded "> Inc ++ </Button>
                         
                         <span className='flex justify-center items-center text-black font-bold text-xl '> {quantity} </span>
 
-                        <Button color="gray"    disabled = {quantity <= 1 }  onClick = {() => checkdecrement(carditems)}    className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer "> Dec -- </Button>
-                      
+                        <Button color="gray"    disabled = {quantity <= 1 }  onClick = {() => checkdecrement(carditems)}    className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded   "> Dec -- </Button>
                     </div>
 
                     <div>
-                        <Button color = "dark"  onClick={() => RemovefromCart(id)}   className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer "> 
-                        Remove from  Cartzz 
+                        <Button color = "dark"  onClick={() => RemovefromCart(id)}   className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded"> 
+                        Remove from  Cart 
                         </Button>
                     </div>
 

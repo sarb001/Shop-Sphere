@@ -49,12 +49,12 @@ const Cart = () => {
                         </div>
 
                         <p className ="mb-3 font-medium">
-                           <span> Total Quantity   </span>
+                           <span> Total Quantity =  </span>
                            <span className='font-extrabold'> {TotalQuantity}   </span>
                         </p>
 
                         <p className = "inline-flex">
-                           <span>  TotalPrice   </span>
+                           <span>  TotalPrice =  </span>
                            <span className = 'font-extrabold'>  Rs.{TotalPrice} </span>
                         </p>
 
