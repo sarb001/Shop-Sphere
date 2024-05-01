@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { decrementproduct, incrementproduct, remove } from '../slices/CartSlice';
+import { Button } from 'flowbite-react' ;
 
 const CartProductCard = ({carditems}) => {
 
@@ -12,6 +13,7 @@ const CartProductCard = ({carditems}) => {
 
     const dispatch = useDispatch();
     const checkincrement = (carditems) => {
+        console.log('clicked incc');
         dispatch(incrementproduct({carditems,quantity}));
     }
 
@@ -27,7 +29,7 @@ const CartProductCard = ({carditems}) => {
   return (
     <>
 
-        <a href="#" class="flex flex-col items-center bg-white border  border-black rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 my-6   dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div  class="flex flex-col items-center bg-white border  border-black rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 my-6   dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
            
          
                 <img class="object-contain w-full rounded-t-lg h-52  md:h-auto md:w-48  md:rounded-none md:rounded-s-lg" src={images[0]} alt={title} />
@@ -43,25 +45,24 @@ const CartProductCard = ({carditems}) => {
                     </div>
 
                     <div className='flex flex-row py-4'>
-                        <button  onClick = {() => checkincrement(carditems)}   class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> Inc ++
-                        </button>
+                        <Button color="gray"  onClick = {() => checkincrement(carditems)}   className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer "> Inc ++ </Button>
                         
                         <span className='flex justify-center items-center text-black font-bold text-xl '> {quantity} </span>
 
-                        <button   disabled = {quantity <= 1 }  onClick = {() => checkdecrement(carditems)}  class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> Dec -- </button>
+                        <Button color="gray"    disabled = {quantity <= 1 }  onClick = {() => checkdecrement(carditems)}    className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer "> Dec -- </Button>
+                      
                     </div>
 
                     <div>
-
-                        <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-                        onClick={() => RemovefromCart(id)}>  Remove from  Cart </button>
-
+                        <Button color = "dark"  onClick={() => RemovefromCart(id)}   className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer "> 
+                        Remove from  Cartzz 
+                        </Button>
                     </div>
 
                 </div>
             </div>
 
-        </a>
+        </div>
     </>
   )
 }
