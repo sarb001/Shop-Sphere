@@ -10,8 +10,7 @@ const ShoppingCard = ({carditems}) => {
 
     const dispatch = useDispatch();
 
-    const { cartitem } = useSelector(state => state?.cart);
-    const { quantity } = useSelector(state => state?.cart);
+    const { cartitem ,quantity } = useSelector(state => state?.cart);
 
     const addtocart = (data) => {
         console.log('addto cart');
@@ -23,36 +22,46 @@ const ShoppingCard = ({carditems}) => {
 
   return (
     <>
-        <div class="max-w-sm rounded overflow-hidden shadow-lg m-4" key = {id}>
-            <div>
-                 <img class="w-full" src= {images[0]} alt ={title} />
-            </div>
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2"> {title} </div>
-            <p class="text-gray-700 text-base"> {description} </p>
-        </div>
-        <div class="px-6 pt-4 pb-2">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{price}</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">({discountPercentage?.toFixed()})% </span>
-        </div>
 
-        <div>{
-            checkitemexists ? (
-                <>
-                    <button  class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> 
-                        <NavLink to = "/cart">  Move to Cart  </NavLink>
-                    </button>
-                </>
-            ) : (
-                <>
-                 <button  onClick = {() => addtocart(carditems)}  class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> Add to Cart </button>
-                </>
-            )
-        }
+        <div class="flex flex-col items-center my-5  rounded-lg shadow md:flex-row md:max-w-[30rem]  lg:max-w-[45rem] xl:max-w-[29rem] border-2  border-black">
+
+            <img class="object-cover w-full rounded-t-lg h-32  md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src={images[0]} alt = {title} />
+
+            
+            <div class="flex flex-col justify-between p-4 leading-normal items-center ">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {title} </h5>
+                <p class="mb-3 font-normal">
+                    {description}
+                </p>
+                <p class="mb-3 font-bold">
+                 Rs.{price}
+                </p>
+                <p class="mb-3 font-bold">
+                   Category = {category}
+                </p>
+                <p class="mb-3 font-bold">
+                 Discount - ({discountPercentage?.toFixed()})%
+                </p>
+            
        
+                 {
+                            checkitemexists ? (
+                                <>
+                                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 lg:w-1/2 ">
+                                    <NavLink to ="/cart"> Move to Cart  </NavLink>
+                                </button>
+                                </>
+                            ) : (
+                                <>
+                                <button onClick = {() => addtocart(carditems)} class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mx-6 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 lg:w-1/2 ">
+                                 Add to Cart  
+                            </button>
+                                </>
+                            )
+                        }
+            </div>
         </div>
-        </div>
+    
     </>
   )
 }
