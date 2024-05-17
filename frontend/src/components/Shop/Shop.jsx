@@ -8,7 +8,7 @@ const Shop = () => {
     const  data  = useSelector(state => state?.products); 
     console.log('data in shop =',data);
     const  loading  = useSelector(state => state?.products); 
-    console.log('loading shop =',loading);
+    // console.log('loading shop =',loading);
     const dispatch = useDispatch();
 
     useEffect(() => {

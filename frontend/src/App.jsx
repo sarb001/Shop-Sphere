@@ -10,7 +10,7 @@ import  'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { ProfileAuthentication } from './components/actions/UserActions'
-import Shop from './components/Shop/Shop'
+import Shop from './components/Shop/Shop.1'
 import Cart from './components/Cart/Cart'
 import Product from './components/Products/Product'
 import PaymentSuccess from './components/Payment/PaymentSuccess'
