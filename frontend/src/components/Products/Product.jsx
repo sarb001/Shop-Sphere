@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductFilter from './ProductFilter'
-import Shop from '../Shop/Shop.1'
+import Shop from '../Shop/Shop'
 
 const Product = () => {
   return (
