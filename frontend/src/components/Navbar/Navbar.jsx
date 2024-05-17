@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {  NavLink ,useNavigate } from 'react-router-dom' ;
-import { FaGlobe } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { FaMoon } from "react-icons/fa6";
-import { IoSunny } from "react-icons/io5";
 import { useDispatch, useSelector  } from 'react-redux' ;
 import { LogoutUser, ProfileAuthentication } from '../actions/UserActions';
-import { FaShoppingCart } from "react-icons/fa";
+import { PiSunDimFill } from "react-icons/pi";
 
 const Navbar = () => {
 
-    const [showbar,setshowbar] = useState(false);
-    const [darkmode,setdarkmode] = useState(false);
-    
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -23,12 +16,10 @@ const Navbar = () => {
         navigate('/'); 
     }
 
-    const shownavlinks = () => { setshowbar(!showbar)}
-    const changemode   = () => { setdarkmode(!darkmode)}
 
     const { isAuth , loading , users } = useSelector(state => state.user);
     console.log('main auth =',isAuth);
-    console.log('users ',users);
+    console.log('users main ',users);
   
     const cartProducts = useSelector(state => state?.cart?.cartitem);
     console.log('products =',cartProducts);
@@ -40,78 +31,76 @@ const Navbar = () => {
         dispatch(ProfileAuthentication())
      },[dispatch])
 
+     
+    const [darkmode,setdarkmode] = useState(false);
+
+    const handleDarkMode = () => {
+        setdarkmode(!darkmode);
+    }
+
 
   return (
-    <>
-     <div className= {`${darkmode &&'dark'}`}>
-        <div className = 'bg-slate-400 sm:bg-neutral-700 md:bg-red-400  lg:bg-green-600  xl:bg-violet-600 2xl:bg-orange-500 text-black  dark:bg-black dark:text-white  w-full'>
-                <div className='mx-4 flex flex-row justify-between p-4 h-16'>
-                <div className='text-2xl'> 
-                    <NavLink to = "/">  ShopSphere  </NavLink> 
-                </div>
+    < >
+        <nav className ="bg-black text-white lg:fixed lg:top-0">
 
-                {!showbar && 
-                <div className='absolute top-[66px]  w-full right-0  text-xl  p-4  bg-gray-500
-                        md:static md:bg-transparent  md:top-10 md:right-0 md:p-0
-                        lg:block xl:block 2xl:block'>
-                        <ul className='grid grid-rows-5  md :grid md:grid-cols-5 md:justify-items-center md:text-center'>
-                        <li  className='pt-2  md:pt-2 lg:font-medium'> 
-                            <NavLink to = "/product">  Shop  </NavLink>     
+             <div class="max-w-screen-xl flex flex-row items-center justify-between mx-auto p-4">
+                    <div>
+                         <NavLink to = "/">  ShopSphere  </NavLink> 
+                    </div>
+
+                    <div className='flex justify-end'>
+                        <button data-collapse-toggle="navbar-default" type="button" className  ="fixed right-[13px] top-[11px]  inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                <div className ="hidden w-full md:block md:w-auto" id="navbar-default">
+
+                    <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-6 md:mt-0 border  md:flex-row  bg-black text-white   md:space-x-8 rtl:space-x-reverse  md:border-0 ">
+                      
+                        <li>
+                            <a href = "/product" class="block py-2 px-3   rounded  md:p-0" aria-current="page">
+                                Shop
+                            </a>
                         </li>
-                        <li  className='py-2 text-2xl' onClick={changemode}> 
-                            { darkmode ? <IoSunny /> : <FaMoon /> }    
+
+                        <li>
+                            <a href="/cart" class="block  py-2 px-3  md:p-0 ">
+                                Cart
+                            </a>
                         </li>
-                        <li  className='py-2'> 
-                        {isAuth ? <NavLink  to = "/cart" >  
-                        <span className='flex self-center '> <FaShoppingCart /> {TotalQuantity} </span> 
-                        </NavLink>
-                         : 
-                        <FaGlobe /> }
-                         </li>
 
-                        {!isAuth ? 
-                            <>
-                            <li  className='py-2'> 
-                                <button className='bg-slate-100 text-blue-600 p-1'> 
-                                <NavLink to='/register'> Register </NavLink>
-                                </button> 
-                            </li>
+                        <li>
+                             <div className='block pl-2.5 text-[20px]' onClick = {handleDarkMode}  > 
+                               {/* {darkmode ? "dark" : "light"} */}
+                               <PiSunDimFill />
+                             </div> 
+                        </li>
 
-                            <li  className='py-2'> 
-                                <button className='bg-slate-100 text-blue-600 p-1'> 
-                                    <NavLink to='/login'> Login </NavLink>
-                                </button>
-                            </li>
+                        <li>
+                             {isAuth ?
+                                <a onClick = {LogoutHandler}  class="block py-4 px-3 md:border-0  md:p-0 cursor-pointer hover:bg-white  hover:text-black ">
+                                {loading ? "...." : "Logout"}
+                                </a>
+                             :
+                                <a href="/login" class="block py-2 px-3  md:border-0 md:p-0 cursor-pointer hover:bg-white  hover:text-black p-2">
+                                Login
+                                </a> 
+                             }
                         
-                            </> 
-                            :
-                                <>
-                                <li  className='py-2'> 
-                                <button className='bg-slate-100 text-blue-600 p-1'
-                                    onClick={LogoutHandler}>
-                                    {loading ? "Logging Out.." : "Logout"}
-                                    </button> 
-                                </li>
+                        </li>
+                    </ul>
 
-                        <li  className='py-2'>  
-                            <button className='bg-slate-100 text-blue-600 p-1' >  
-                            { loading === true ? "<h1> Loading... </h1>" :  <> {users?.userProfile?.name} </>}   
-                            </button> 
-                        </li> 
-                            </> 
-        } 
-                        </ul> 
-                 </div> 
-                }  
+                </div>
+            </div>
+            </nav>
 
-                <div className=' md:hidden  xl:hidden  2xl:hidden  lg:hidden'>
-                    <span className='text-3xl relative' onClick={shownavlinks}> <GiHamburgerMenu /> </span>
-                </div> 
-        </div> 
-        </div> 
-     </div>
     </>
   )
 }
 
 export default Navbar
+

@@ -14,9 +14,15 @@ import Shop from './components/Shop/Shop'
 import Cart from './components/Cart/Cart'
 import Product from './components/Products/Product'
 import PaymentSuccess from './components/Payment/PaymentSuccess'
+import { initFlowbite } from 'flowbite'
+
 
 function App() {
-
+  
+   useEffect(() => {
+    initFlowbite();
+  })
+  
   const { isAuth , loading } = useSelector(state => state.user);
   console.log('main auth =',isAuth);
 
@@ -29,16 +35,16 @@ function App() {
   return (
   <>
   <Navbar />
-   <Routes>
-     <Route path='/' element= {isAuth ? <Home /> : <Login /> }>  </Route>
-     <Route path='/register' element= {<Register />}>  </Route>
-     <Route path='/login' element= {<Login />}>  </Route>
-     <Route path='/about' element= {isAuth ? <About /> : <Login />}>  </Route>
-     <Route path='/product' element= {isAuth ? <Product /> : <Login />}>  </Route>
-     <Route path='/cart' element= {isAuth ? <Cart /> : <Login />}>  </Route>
-     <Route path='/paymentsuccess' element= {isAuth ? <PaymentSuccess /> : <Login />}>  </Route>
-     
-    </Routes> 
+    <Routes>
+      <Route path='/' element= {isAuth ? <Home /> : <Login /> }>  </Route>
+      <Route path='/register' element= {<Register />}>  </Route>
+      <Route path='/login' element= {<Login />}>  </Route>
+      <Route path='/about' element= {isAuth ? <About /> : <Login />}>  </Route>
+      <Route path='/product' element= {isAuth ? <Product /> : <Login />}>  </Route>
+      <Route path='/cart' element= {isAuth ? <Cart /> : <Login />}>  </Route>
+      <Route path='/paymentsuccess' element= {isAuth ? <PaymentSuccess /> : <Login />}>  </Route>
+      
+      </Routes> 
     <ToastContainer  autoClose = {300} />
   </>
   )
