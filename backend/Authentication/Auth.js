@@ -5,7 +5,7 @@ export const VerifyAuth = async(req,res,next) => {
     console.log('starting authe =');
     try {
          console.log('cookies =',req.cookies);
-        const  { jwtToken } = await req.cookies;
+        const  { jwtToken } = await req.cookies || req.header('Authorization')?.replace("Bearer" ,"");
         const token = jwtToken;
         console.log('token recieved  =',token);
 
