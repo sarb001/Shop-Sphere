@@ -5,7 +5,6 @@ import { LogoutUser, ProfileAuthentication } from '../actions/UserActions';
 import { TbSunFilled } from "react-icons/tb";
 import { FaMoon } from "react-icons/fa";
 
-
 const Navbar = () => {
 
     const dispatch = useDispatch();
@@ -49,7 +48,7 @@ const Navbar = () => {
 
   return (
     < >
-        <nav className = {`dark:bg-black dark:text-white bg-white text-black lg:fixed lg:top-0`}>
+        <nav className = {` dark:bg-black dark:text-white text-black bg-white lg:fixed lg:top-0`}>
 
              <div class="max-w-screen-xl flex flex-row items-center justify-between mx-auto p-4">
                     <div>
