@@ -29,7 +29,7 @@ const ShoppingCard = ({carditems}) => {
 
             
             <div class="flex flex-col justify-between p-4 leading-normal items-center ">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {title} </h5>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black "> {title} </h5>
                 <p class="mb-3 font-normal">
                     {description}
                 </p>
