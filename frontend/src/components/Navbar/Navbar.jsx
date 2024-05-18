@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import {  NavLink ,useNavigate } from 'react-router-dom' ;
+import {  NavLink ,useNavigate ,Link } from 'react-router-dom' ;
 import { useDispatch, useSelector  } from 'react-redux' ;
 import { LogoutUser, ProfileAuthentication } from '../actions/UserActions';
 import { PiSunDimFill } from "react-icons/pi";
+
 
 const Navbar = () => {
 
@@ -62,15 +63,14 @@ const Navbar = () => {
                     <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-6 md:mt-0 border  md:flex-row  bg-black text-white   md:space-x-8 rtl:space-x-reverse  md:border-0 ">
                       
                         <li>
-                            <a href = "/product" class="block py-2 px-3   rounded  md:p-0" aria-current="page">
-                                Shop
-                            </a>
+                            <Link to = "/product"  className = "block py-2 px-3   rounded  md:p-0" > Shop  
+                            </Link> 
                         </li>
 
                         <li>
-                            <a href="/cart" class="block  py-2 px-3  md:p-0 ">
-                                Cart
-                            </a>
+                            <Link to = "/cart"  className = "block  py-2 px-3  md:p-0 " > 
+                            Cart  
+                            </Link> 
                         </li>
 
                         <li>
@@ -82,13 +82,13 @@ const Navbar = () => {
 
                         <li>
                              {isAuth ?
-                                <a onClick = {LogoutHandler}  class="block py-4 px-3 md:border-0  md:p-0 cursor-pointer hover:bg-white  hover:text-black ">
+                                <Link onClick = {LogoutHandler}  class="block py-4 px-3 md:border-0  md:p-0 cursor-pointer hover:bg-white  hover:text-black ">
                                 {loading ? "...." : "Logout"}
-                                </a>
+                                </Link>
                              :
-                                <a href="/login" class="block py-2 px-3  md:border-0 md:p-0 cursor-pointer hover:bg-white  hover:text-black p-2">
+                                <Link to = "/login" class="block py-2 px-3  md:border-0 md:p-0 cursor-pointer hover:bg-white  hover:text-black p-2">
                                 Login
-                                </a> 
+                                </Link> 
                              }
                         
                         </li>
