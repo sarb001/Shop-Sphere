@@ -63,7 +63,7 @@ const ProductFilter = () => {
         <div id="drawer-disable-body-scrolling" className =" lg:block
         lg:left-64 lg:top-16 lg:fixed
         fixed top-0 left-0 z-40 h-screen p-4   overflow-y-auto font-bold transition-transform -translate-x-full bg-white w-64 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
-            <h5 id="drawer-disable-body-scrolling-label" class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400"> All Filters </h5>
+            <h5 id="drawer-disable-body-scrolling-label" class="text-base font-semibold text-black uppercase dark:text-white "> All Filters </h5>
           
             <button type="button" data-drawer-hide="drawer-disable-body-scrolling" aria-controls="drawer-disable-body-scrolling" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -76,7 +76,7 @@ const ProductFilter = () => {
                 <ul class="space-y-2 font-medium">
 
                         <li>
-                        <div> Search by Category  </div>
+                        <div className='dark:text-white'> Search by Category  </div>
                                 {categories?.map((item) => {
                                     return (
                                         <div key = {item.id}>
@@ -90,7 +90,7 @@ const ProductFilter = () => {
 
                         <li>
                             <div className='p-1'>
-                                <label for="price">Sort by Price</label>
+                                <label for="price" className='dark:text-white'>Sort by Price</label>
                                 <select name="price" id="price" onChange={(e) => handlePriceChange(e)}>
                                     <option value="lowest"> Lowest Price </option>
                                     <option value="highest"> Highest Price  </option>
@@ -99,8 +99,8 @@ const ProductFilter = () => {
                         </li>
 
                         <li>
-                            <div className='p-1'>
-                                    <div> Sort by Discount </div>
+                            <div className='p-1 dark:text-white'>
+                                    <div > Sort by Discount </div>
                                     <div>
                                         <label htmlFor = 'discount'> More than 10%  Discount </label>
                                         <input id = "discount"  type = "checkbox"   checked = {checkbox} value='10'  
@@ -125,51 +125,6 @@ const ProductFilter = () => {
                 </ul>
             </div>
         </div>
-
-
-            {/* <div> Search by Category =  </div>
-
-            <span>
-                 {categories?.map((item) => {
-                    return (
-                        <div key = {item.id}>
-                            <div style = {{margin:'3%'}}>
-                             <button className = "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" onClick={() => handlecategory(item)}> {item} </button>
-                            </div>
-                        </div>
-                    )
-                 })}
-            </span> */}
-         
-            {/* <div>
-            <label for="price">Sort by Price</label>
-            <select name="price" id="price" onChange={(e) => handlePriceChange(e)}>
-                <option value="lowest"> Lowest Price </option>
-                <option value="highest"> Highest Price  </option>
-            </select>
-            </div> */}
-
-
-            {/* <div>
-                <div> Sort by Discount </div>
-                <div>
-                    <label htmlFor = 'discount'> More than 10%  Discount </label>
-                    <input id = "discount"  type = "checkbox"   checked = {checkbox} value='10'  
-                    onChange={(e) =>  handlediscountchange(e)}
-                    />
-                 </div>
-
-                <div>
-                     <label htmlFor = 'discount'> Less then 10% Discount </label>
-                    <input id = "discount" type = "checkbox"  value ='10'  checked = {checkbox1}   
-                    onChange={(e) =>  handlesecondcountchange(e)}  />
-                </div> 
-            </div> */}
-
-           {/* <div style = {{padding:'4%'}}>
-             <button  className = "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"  value='clear' onClick={clearFilterAll}> Clear </button>
-           </div> */}
-
         </div>
     
     </>  
