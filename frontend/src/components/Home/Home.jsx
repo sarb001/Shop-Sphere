@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <>
-     <div className="home-section  px-6 mt-16">
+     <div className=" dark:bg-black dark:text-white dark:mt-0  home-section  px-6 mt-16">
 
         <div className=' grid grid-rows-2 gap-8 md:grid-rows-[0.4fr_0.6fr] lg:grid  lg:grid-cols-2 lg:gap-0.5  xl:grid-cols-2 xl:px-6 xl:my-8'>
 
@@ -36,11 +36,13 @@ const Home = () => {
             {cards?.map((i) => {
               return (
                 <div>
-                  <div key = {i?.title} className='px-4 flex items-center bg-neutral-600  h-[30vh] my-4 '>
+                  <div key = {i?.title} className='px-4 flex items-center bg-[#d9d5d5] 
+                  dark:text-black
+                  h-[20vh] my-4 '>
                       <span className='text-3xl'> {i.logo} </span>
                     <div>
-                      <div className='text-4xl mb-5 xl:text-3xl'> {i?.title} </div>
-                      <div className='text-xl lg:text-xl'> {i?.desc} </div>
+                      <div className='text-4xl mb-5  md:text-2xl font-bold  lg:text-xl lg:mb-2 xl:text-3xl'> {i?.title} </div>
+                      <div className='text-xl   lg:text-xs '> {i?.desc} </div>
                     </div>
                 </div>
                 </div>
