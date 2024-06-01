@@ -75,8 +75,11 @@ export const LoginUser = async(req,res) => {
         console.log('token generated =',Token);
 
         res.cookie('jwtToken' ,Token , {
-            maxAge : new Date(Date.now() + 900000),
-            path: '/'
+            sameSite : 'None',
+            httpOnly : true,
+            secure   : true,
+            maxAge : 1000 * 60 * 60 * 24 * 7,
+            expires : new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)
         });
 
         const user = finduser;
