@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import {  NavLink ,useNavigate } from 'react-router-dom' ;
+import {  NavLink ,useNavigate ,Link } from 'react-router-dom' ;
 import { useDispatch, useSelector  } from 'react-redux' ;
 import { LogoutUser, ProfileAuthentication } from '../actions/UserActions';
-import { PiSunDimFill } from "react-icons/pi";
+import { TbSunFilled } from "react-icons/tb";
+import { FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
 
@@ -15,7 +16,6 @@ const Navbar = () => {
         await  dispatch(LogoutUser());   
         navigate('/'); 
     }
-
 
     const { isAuth , loading , users } = useSelector(state => state.user);
     console.log('main auth =',isAuth);
@@ -35,13 +35,20 @@ const Navbar = () => {
     const [darkmode,setdarkmode] = useState(false);
 
     const handleDarkMode = () => {
-        setdarkmode(!darkmode);
+        setdarkmode((prev) => !prev);
     }
 
+    useEffect(() => {
+        if(darkmode){
+            document.documentElement.classList.add('dark');
+        }else{
+            document.documentElement.classList.remove('dark');
+        }
+    },[darkmode])
 
   return (
     < >
-        <nav className ="bg-black text-white lg:fixed lg:top-0">
+        <nav className = {` dark:bg-black dark:text-white text-black bg-white lg:fixed lg:top-0`}>
 
              <div class="max-w-screen-xl flex flex-row items-center justify-between mx-auto p-4">
                     <div>
@@ -59,36 +66,34 @@ const Navbar = () => {
 
                 <div className ="hidden w-full md:block md:w-auto" id="navbar-default">
 
-                    <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-6 md:mt-0 border  md:flex-row  bg-black text-white   md:space-x-8 rtl:space-x-reverse  md:border-0 ">
+                    <ul className = "absolute right-0  md:relative font-medium flex flex-col p-4 md:p-0 mt-6 md:mt-0 border  md:flex-row   md:space-x-8 rtl:space-x-reverse  md:border-0 ">
                       
                         <li>
-                            <a href = "/product" class="block py-2 px-3   rounded  md:p-0" aria-current="page">
-                                Shop
-                            </a>
+                            <Link to = "/product"  className = "block py-2 px-3   rounded  md:p-0" > Shop  
+                            </Link> 
                         </li>
 
                         <li>
-                            <a href="/cart" class="block  py-2 px-3  md:p-0 ">
-                                Cart
-                            </a>
+                            <Link to = "/cart"  className = "block  py-2 px-3  md:p-0 " > 
+                            Cart  
+                            </Link> 
                         </li>
 
                         <li>
-                             <div className='block pl-2.5 text-[20px]' onClick = {handleDarkMode}  > 
-                               {/* {darkmode ? "dark" : "light"} */}
-                               <PiSunDimFill />
+                             <div className='block pl-2.5 text-[20px] h-full w-12' onClick = {handleDarkMode}  > 
+                               {darkmode ? <FaMoon /> :  <TbSunFilled /> }
                              </div> 
                         </li>
 
                         <li>
                              {isAuth ?
-                                <a onClick = {LogoutHandler}  class="block py-4 px-3 md:border-0  md:p-0 cursor-pointer hover:bg-white  hover:text-black ">
+                                <Link onClick = {LogoutHandler}  class="block py-4 px-3 md:border-0  md:p-0 cursor-pointer hover:bg-white  hover:text-black ">
                                 {loading ? "...." : "Logout"}
-                                </a>
+                                </Link>
                              :
-                                <a href="/login" class="block py-2 px-3  md:border-0 md:p-0 cursor-pointer hover:bg-white  hover:text-black p-2">
+                                <Link to = "/login" class="block py-2 px-3  md:border-0 md:p-0 cursor-pointer hover:bg-white  hover:text-black p-2">
                                 Login
-                                </a> 
+                                </Link> 
                              }
                         
                         </li>
@@ -96,7 +101,7 @@ const Navbar = () => {
 
                 </div>
             </div>
-            </nav>
+        </nav>
 
     </>
   )

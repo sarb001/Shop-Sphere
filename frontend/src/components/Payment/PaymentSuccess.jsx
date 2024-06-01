@@ -8,11 +8,11 @@ const PaymentSuccess = () => {
   console.log('get Query =',ReferenceNum);
 
   return (
-    <div>
+    <div className='flex justify-center items-center text-2xl'>
       {ReferenceNum ? 
       <>
-        <h3> Order Successfull </h3>
-        <p> Order No. {ReferenceNum} </p>
+        <div> Order Successfull </div>
+        <div> Order No. {ReferenceNum} </div> 
       </>
       : 
       <>

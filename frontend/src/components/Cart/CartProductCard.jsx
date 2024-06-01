@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { decrementproduct, incrementproduct, remove } from '../slices/CartSlice';
 import { Button } from 'flowbite-react' ;
 
-const CartProductCard = ({carditems}) => {
+const  CartProductCard = ({carditems}) => {
 
     console.log('cart items =',carditems);
 
@@ -39,22 +39,22 @@ const CartProductCard = ({carditems}) => {
 
                     <div>
                         <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {title}  </h3>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        <p class="mb-3 font-normal text-gray-700 dark:text-white ">
                         {description}
                         </p>
-                        <p className='text-2xl font-bold tracking-tight text-gray-900 '> Rs.={price}/- </p>
+                        <p className='text-2xl font-bold tracking-tight text-gray-900  dark:text-white'> Rs.={price}/- </p>
                     </div>
 
                     <div className='flex flex-row py-4'>
                         <Button color = "gray"  onClick = {() => checkincrement(carditems)}   className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded "> Inc ++ </Button>
                         
-                        <span className='flex justify-center items-center text-black font-bold text-xl '> {quantity} </span>
+                        <span className='flex justify-center items-center text-black font-bold text-xl dark:text-white '> {quantity} </span>
 
                         <Button color="gray"    disabled = {quantity <= 1 }  onClick = {() => checkdecrement(carditems)}    className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded   "> Dec -- </Button>
                     </div>
 
                     <div>
-                        <Button color = "dark"  onClick={() => RemovefromCart(id)}   className ="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded"> 
+                        <Button color = "dark"  onClick={() => RemovefromCart(id)}   className ="bg-white hover:bg-gray-100 text-gray-800 dark:text-white font-semibold py-2 px-4 border border-gray-400 rounded"> 
                         Remove from  Cart 
                         </Button>
                     </div>
