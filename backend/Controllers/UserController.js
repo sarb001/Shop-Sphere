@@ -113,7 +113,11 @@ export const Profile = async(req,res) => {
 
 export const LogoutUser = async(req,res) => {
     try { 
-            res.clearCookie('jwtToken');
+            res.clearCookie('jwtToken' , {
+                 httpOnly : true,
+                 sameSite : 'None',
+                 secure : true,
+            });
             return res.status(200).json({
                 success : true,
                 message  : " User Logged Out "
