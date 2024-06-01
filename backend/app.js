@@ -16,7 +16,7 @@ dbConnection();
 app.use(express.urlencoded({ extended : true }));
 app.use(cookieParser());
 
-
+// deployed url added
 app.use(cors({
     origin : process.env.FRONTEND_URL,
     credentials :true
