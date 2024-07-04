@@ -3,6 +3,7 @@ import dbConnection from './Database/Database.js';
 import dotenv from 'dotenv';
 import UserRoute from './Routes/UserRoute.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors' ;
 
 const app = express();
 app.use(express.json({
@@ -13,8 +14,14 @@ dotenv.config();
 dbConnection();
 
 app.use(express.urlencoded({ extended : true }));
-
 app.use(cookieParser());
+
+
+app.use(cors({
+    origin : process.env.FRONTEND_URL,
+    credentials :true
+}))
+
 app.use('/api', UserRoute)
 
 const PORT = 5000;

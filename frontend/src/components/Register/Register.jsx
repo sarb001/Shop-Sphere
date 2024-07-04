@@ -64,8 +64,7 @@ const Register = () => {
 
             <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
               Already have an account?
-                <NavLink to ="/login" class="text-blue-700 hover:underline dark:text-blue-500">   Login Here </NavLink>
-              
+                <NavLink to ="/login" class="text-blue-700 hover:underline dark:text-blue-500">   Login Here </NavLink>    
             </div>
         </form>
 

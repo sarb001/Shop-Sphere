@@ -5,7 +5,13 @@ import {  toast } from 'react-toastify' ;
 // userData is argument = like name,email,pass as args 
 export  const  RegisterUser = createAsyncThunk('api/register' , async(userData, { rejectWithValue } ) => {
     try {
-            const response = await axios.post('api/register' , userData);
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/register` , {
+                    headers : {
+                            'Content-Type' :'application/json'
+                        },
+                withCredentials :true,
+                params:userData,
+            });
             console.log(' signup response =',response);
             toast.success(response.data.message);
             return true;
@@ -16,11 +22,13 @@ export  const  RegisterUser = createAsyncThunk('api/register' , async(userData, 
     }
 });
 
-export  const  LoginUser = createAsyncThunk('api/login' , async(userData , { rejectWithValue }) => {
+export  const  LoginUser = createAsyncThunk(`api/login`, async(userData , { rejectWithValue }) => {
     try {       
         console.log('userdata login =',userData);
-        const response = await axios.post('api/login' , userData);
-        // localStorage.setItem('logininfo' , JSON.stringify(response.data))
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login` ,userData,
+        {
+                withCredentials :true
+        });
         console.log('login response =',response);
         toast.success(response.data.message);
         return response.data;
@@ -31,10 +39,16 @@ export  const  LoginUser = createAsyncThunk('api/login' , async(userData , { rej
 }
 })
 
-export const LogoutUser = createAsyncThunk('api/logout' , async( userData  , { rejectWithValue }) => {
+export const LogoutUser = createAsyncThunk(`api/logout` , async( userData  , { rejectWithValue }) => {
         try {
                         console.log('userdata logout =',userData);
-                const response = await axios.get('api/logout' , userData);
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/logout` , {
+                        headers : {
+                                'Content-Type' : 'application/json',
+                        },
+                        withCredentials: true,
+                        params: userData
+                });
                 console.log('logout reponse =',response);
                 toast.success(response.data.message);
                 return true;
@@ -46,7 +60,13 @@ export const LogoutUser = createAsyncThunk('api/logout' , async( userData  , { r
 
 export const ProfileAuthentication = createAsyncThunk('api/profile' , async( userData  ,{ rejectWithValue }) => {
         try {
-                const response = await axios.get('api/profile' , userData);
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/profile` , {
+                        headers : {
+                                'Content-Type' : 'application/json',
+                        },
+                        withCredentials: true,
+                        params: userData
+                });
                 console.log('response profile=',response);
                 return response.data;
         } catch (error) {
@@ -59,13 +79,24 @@ export const Checkout = createAsyncThunk('api/checkout' , async(userData  , { re
         try {
                 console.log('checkout userdata =',userData);
                 const { TotalPrice } = userData;
-                const  keydata   = await axios.get('api/paymentkey');
+
+                const  keydata   = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/paymentkey`, {
+                        headers: {
+                                'Content-Type' : 'application/json'
+                        },
+                        withCredentials :true
+                });
                 console.log('key= =',keydata.data?.key_id);
 
                 const  keyid = keydata.data?.key_id;
 
                 console.log('order 11 1 =',TotalPrice);
-                const response  = await axios.post('api/checkout', {TotalPrice});
+                const response  = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/checkout`, { TotalPrice } , {
+                        headers : {
+                                'Content-Type' : 'application/json'
+                        },
+                        withCredentials :true,
+                });
                 const orderamount = response.data.order.amount;
                 const orderid = response.data.order.id;
                 console.log('order ==',orderamount);
@@ -79,7 +110,7 @@ export const Checkout = createAsyncThunk('api/checkout' , async(userData  , { re
                         description: "Test Transaction",
                         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAHXPluq6GtTRPDIHRv5kJPy86uFjp5sO7hg&usqp=CAU",
                         order_id: orderid,
-                        callback_url: "http://localhost:5000/api/paymentverification",
+                        callback_url: `${import.meta.env.VITE_BACKEND_URL}/api/paymentverification`,
                         prefill: {
                             name: "Abhi Sucks",
                             email: "abhi.sucks@example.com",
